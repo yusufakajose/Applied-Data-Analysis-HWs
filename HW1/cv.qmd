@@ -1,0 +1,57 @@
+---
+title: "Yusuf Nazım Pehlivan"
+format: html
+editor: visual
+---
+
+# Education
+
+Undergraduate at **Bilkent University** Mathematics Department, Sept **2020** -
+
+-   Relevant Courses (Applied Data Analysis, Computers and Data Organization, Algorithms and Programming 1, Algorithms and Programming 2)
+
+# Employment
+
+No employment until now. Looking for future **data science** or **machine learning** internships.
+
+# Projects 
+
+**Food Delivery System** \| Technology Stack Used: **Python**, PySimpleGUI, **SQL**(SQLite)
+
+-   Created a food delivery system with a user-friendly client and admin interface using PySimpleGUI.
+
+-   Implemented databases to store tables using SQLite.
+
+-   Built ER(Entity Relationship) diagrams.
+
+# Technical Skills
+
+**Languages**: Python, SQL, Java, Javascript, LaTeX
+
+**Operating Systems:** Microsoft, Linux
+
+**Libraries**: TensorFlow, Keras, Pandas, Numpy, Plotly, SciPy, Beautiful Soup, Matplotlib, PySimpleGUI
+
+**Development Tools:** Spyder, VS Code, Jupyter Notebook, Atom, Sublime
+
+**Web Design:** HTML, CSS, Javascript
+
+**Databases:** SQLite
+
+# Certifications
+
+**Data Visualization**, Intro to Machine Learning, **Data Cleaning**, Intro to AI Ethics(Kaggle)
+
+**Machine Learning Specialization**(Coursera)
+
+How is Data Used in Football?(AnalyiSport)
+
+AI Summer School for High School Students(Bilkent University)
+
+# Extracurricular
+
+Author - GazeteBilkent - Wrote about state-of-art technologies and scientific discoveries.
+
+Language learning: English(C1), German(A2), Spanish(A2)
+
+Sports: Squash, Bodybuilding

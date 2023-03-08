@@ -1,0 +1,201 @@
+---
+title: "HW1"
+format: html
+editor: visual
+---
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+```{r}
+library(nycflights13)
+library(tidyverse)
+```
+
+Section 5.2.4 Exercise 1 Find all flights that had an arrival delay of two or more hour Since the arr_delay variable is measured in minutes, find flights with an arrival delay of 120 or more minutes.
+
+```{r}
+filter(flights, arr_delay >= 120)
+```
+
+Exercise 2 Find all flights that flew to Houston (IAH or HOU) The flights that flew to **Houston** are those flights where the destination (**dest**) is either "**IAH**" or "**HOU**".
+
+```{r}
+filter(flights, dest == "IAH" | dest == "HOU")
+```
+
+Exercise 3 Find all flights that were operated by United, American, or Delta In the **flights** dataset, the column **carrier** indicates the airline, but it uses two-character carrier codes. We can find the carrier codes for the airlines in the **airlines** dataset.
+
+```{r}
+airlines
+```
+
+Then, we look up the carrier codes for "United", "American" and "Delta". The carrier code for Delta is **"DL"**, for American is **"AA"**, and for United is **"UA"**. We check whether **carrier** is one of those.
+
+```{r}
+filter(flights, carrier %in% c("AA", "DL", "UA"))
+```
+
+Section 5.3.1 Exercise 2 Sort **flights** to find the most delayed flights. Find the flights that left earliest.
+
+Find the most delayed flights by sorting the table by departure delay, **dep_delay**, in descending order.
+
+```{r}
+#The most delayed fights
+arrange(flights, desc(dep_delay))
+#Flights that left earliest
+arrange(flights, dep_delay)
+```
+
+Exercise 3 Sort **flights** to find the fastest (highest speed) flights.
+
+Interpreted "fastest" as "the flight with the shortest flight time". We can use arrange to sort our data by the **air_time** to find the shortest flights.
+
+```{r}
+head(arrange(flights, desc(distance / air_time)))
+```
+
+Interpreted "fastest" as the flight with the highest **average ground speed.** The ground speed is not included in the data, but we can calculate it from the **distance** and **air_time** of the flight.
+
+```{r}
+head(arrange(flights, desc(distance / air_time)))
+```
+
+Exercise 4 Which flights travelled the farthest? Which travelled the shortest?
+
+To find the longest flight, sort the flights by the **distance** column in descending order.
+
+```{r}
+arrange(flights, desc(distance))
+```
+
+The longest flight is HA 51, JFK to HNL, which is 4,983 miles.
+
+To find the shortest flight, sort the flights by the **distance** in ascending order, which is the default sort order.
+
+```{r}
+arrange(flights, distance)
+```
+
+The shortest flight is US 1632, EWR to LGA. Also, this flight is missing a departure time, therefore it either did not actually fly or there is a problem with the data.
+
+The terms "longest" and "shortest" can also refer to the time of the flight instead of the distance. Then, the longest and shortest flights can be found by the **air_time** column. The longest flights by **air_time** are the following.
+
+```{r}
+arrange(flights, desc(air_time))
+```
+
+The shortest flights by airtime are the following.
+
+```{r}
+arrange(flights, air_time)
+```
+
+Section 5.6.7 Exercise 5 Which carrier has the worst delays? Challenge: can you disentangle the effects of bad airports vs. bad carriers? Why/why not? (Hint: think about `flights %>% group_by(carrier, dest) %>% summarise(n())`)
+
+```{r}
+flights %>%
+  group_by(carrier) %>%
+  summarise(arr_delay = mean(arr_delay, na.rm = TRUE)) %>%
+  arrange(desc(arr_delay))
+```
+
+What airline corresponds to the "F9" carrier code?
+
+```{r}
+filter(airlines, carrier == "F9")
+```
+
+Frontier Airlines Inc. has the worst delays.
+
+You can disentangle the effects of airports versus bad carriers by comparing the average delay of each carrier to the average delay of flights within a route(flights from the same origin to the same destination) Comparing the delays between carriers and within each route disentangles the effect of carriers and airports.
+
+A better way is to compare the average delay of a carrier's flights to the average delay of a carrier's flights to the average delay of all other carrier's flights within a route.
+
+```{r}
+flights %>%
+  filter(!is.na(arr_delay)) %>%
+  group_by(origin, dest, carrier) %>%
+  summarise(
+    arr_delay = sum(arr_delay),
+    flights = n()
+  ) %>%
+  group_by(origin, dest) %>%
+  mutate(
+    arr_delay_total = sum(arr_delay),
+    flights_total = sum(flights)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    arr_delay_others = (arr_delay_total - arr_delay) /
+      (flights_total - flights),
+    arr_delay_mean = arr_delay / flights,
+    arr_delay_diff = arr_delay_mean - arr_delay_others
+  ) %>%
+  filter(is.finite(arr_delay_diff)) %>%
+  group_by(carrier) %>%
+  summarise(arr_delay_diff = mean(arr_delay_diff)) %>%
+  arrange(desc(arr_delay_diff))
+```
+
+Section 5.7.1 Exercise 2 Which plane (tailnum) has the worst on-time record?
+
+The question does not define a way to measure on-time record, therefore I will examine two metrics:
+
+1.  proportion of flights not delayed or cancelled, and
+
+2.  mean arrival delay.
+
+The first metric is the proportion of not-cancelled and on-time flights. I consider the presence of an arrival time that a flight was not cancelled. Nonetheless, there are many planes that have never flown an on-time flight. Also, many of the planes that have the lowest proportion of on-time flights have just flown a small number of flights.
+
+```{r}
+flights %>%
+  filter(!is.na(tailnum)) %>%
+  mutate(on_time = !is.na(arr_time) & (arr_delay <= 0)) %>%
+  group_by(tailnum) %>%
+  summarise(on_time = mean(on_time), n = n()) %>%
+  filter(min_rank(on_time) == 1)
+```
+
+Therefore, I will remove planes that flew at least 20 flights. The choice of 20 was because it round number near the first quartile of the number of flights by plane.
+
+```{r}
+quantile(count(flights, tailnum)$n)
+```
+
+The plane with the worst on time record that flew at least 20 flights is:
+
+```{r}
+flights %>%
+  filter(!is.na(tailnum), is.na(arr_time) | !is.na(arr_delay)) %>%
+  mutate(on_time = !is.na(arr_time) & (arr_delay <= 0)) %>%
+  group_by(tailnum) %>%
+  summarise(on_time = mean(on_time), n = n()) %>%
+  filter(n >= 20) %>%
+  filter(min_rank(on_time) == 1)
+```
+
+There are cases where arr_delay is missing but arr_time is not missing. These rows are dropped for the purposes of this exercise. The second metric is the mean minutes delayed. As with the previous metric, I will just consider planes which flew at least 20 flights. A different plane has the worst on-time record when measured as average minutes delayed.
+
+```{r}
+flights %>%
+  filter(!is.na(arr_delay)) %>%
+  group_by(tailnum) %>%
+  summarise(arr_delay = mean(arr_delay), n = n()) %>%
+  filter(n >= 20) %>%
+  filter(min_rank(desc(arr_delay)) == 1)
+```
+
+Exercise 3 What time of day should you fly if you want to avoid delays as much as possible?
+
+Grouped by the hour of the flight. The earlier the flight is scheduled, the lower possibility for expected delay. Morning flights have fewer previous (or none) flights that can delay them.
+
+```{r}
+flights %>%
+  group_by(hour) %>%
+  summarise(arr_delay = mean(arr_delay, na.rm = TRUE)) %>%
+  arrange(arr_delay)
+```
+
+\
