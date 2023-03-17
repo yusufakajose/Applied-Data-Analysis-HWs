@@ -1,0 +1,405 @@
+---
+title: "exercise10"
+author: "Yusuf Nazım Pehlivan"
+format: html
+editor: visual
+---
+
+**9. This exercise involves the Auto data set studied in the lab. Make sure
+that the missing values have been removed from the data.**
+
+The **Auto** dataset from the ISLR2 package in R has no missing values, THER you do not need to remove any missing values.
+
+```{r}
+library(ISLR2)
+library(tidyverse)
+Auto
+sum(is.na(Auto))
+```
+
+The last line will output 0, indicating that there are no missing values in the **Auto** dataset.
+
+**(a) Which of the predictors are quantitative, and which are qualitative?**
+
+The quantitative predictors in the **Auto** dataset are:
+
+1.  **mpg**: miles per gallon (continuous variable)
+
+2.  **cylinders**: number of cylinders in the engine (discrete variable)
+
+3.  **displacement**: engine displacement in cubic inches (continuous variable)
+
+4.  **horsepower**: engine horsepower (continuous variable)
+
+5.  **weight**: vehicle weight in pounds (continuous variable)
+
+6.  **acceleration**: time to accelerate from 0 to 60 mph in seconds (continuous variable)
+
+7.  **year**: model year (discrete variable)
+
+8.  **origin**: origin of the car (discrete variable)
+
+The qualitative predictor in the **Auto** dataset is:
+
+1.  **name**: car name (categorical variable)
+
+P.S. **origin** is also a categorical variable, but it takes on numerical values (1, 2, or 3) instead of string values like **name**. Therefore, **origin** is often treated as a discrete quantitative variable rather than a qualitative variable.\
+
+```{r}
+# Calculate range of quantitative predictors
+range_mpg <- range(Auto$mpg)
+range_cylinders <- range(Auto$cylinders)
+range_displacement <- range(Auto$displacement)
+range_horsepower <- range(Auto$horsepower)
+range_weight <- range(Auto$weight)
+range_acceleration <- range(Auto$acceleration)
+range_year <- range(Auto$year)
+range_origin <- range(Auto$origin)
+range_mpg
+range_cylinders
+
+# Print range of each quantitative predictor
+cat("Range of mpg: ", range_mpg, "\n")
+cat("Range of cylinders: ", range_cylinders, "\n")
+cat("Range of displacement: ", range_displacement, "\n")
+cat("Range of horsepower: ", range_horsepower, "\n")
+cat("Range of weight: ", range_weight, "\n")
+cat("Range of acceleration: ", range_acceleration, "\n")
+cat("Range of year: ", range_year, "\n")
+cat("Range of origin: ", range_origin, "\n")
+```
+
+**(c) What is the mean and standard deviation of each quantitative
+predictor?**
+
+```{r}
+library(ISLR2)
+library(dplyr)
+
+data(Auto)
+
+Auto %>%
+  summarise(mean_mpg = mean(mpg),
+            sd_mpg = sd(mpg),
+            mean_cylinders = mean(cylinders),
+            sd_cylinders = sd(cylinders),
+            mean_displacement = mean(displacement),
+            sd_displacement = sd(displacement),
+            mean_horsepower = mean(horsepower),
+            sd_horsepower = sd(horsepower),
+            mean_weight = mean(weight),
+            sd_weight = sd(weight),
+            mean_acceleration = mean(acceleration),
+            sd_acceleration = sd(acceleration),
+            mean_year = mean(year),
+            sd_year = sd(year),
+            mean_origin = mean(origin),
+            sd_origin = sd(origin))
+```
+
+**(d) Now remove the 10th through 85th observations. What is the
+range, mean, and standard deviation of each predictor in the
+subset of the data that remains?**
+
+```{r}
+library(ISLR2)
+library(dplyr)
+
+data(Auto)
+
+# Remove 10th through 85th observations
+Auto_subset <- Auto %>% 
+  slice(-10:-85)
+
+# Calculate range, mean, and standard deviation of each predictor in subset
+Auto_subset %>%
+  summarise(
+    range_mpg = range(mpg)[2] - range(mpg)[1],
+    mean_mpg = mean(mpg),
+    sd_mpg = sd(mpg),
+    range_cylinders = range(cylinders)[2] - range(cylinders)[1],
+    mean_cylinders = mean(cylinders),
+    sd_cylinders = sd(cylinders),
+    range_displacement = range(displacement)[2] - range(displacement)[1],
+    mean_displacement = mean(displacement),
+    sd_displacement = sd(displacement),
+    range_horsepower = range(horsepower)[2] - range(horsepower)[1],
+    mean_horsepower = mean(horsepower),
+    sd_horsepower = sd(horsepower),
+    range_weight = range(weight)[2] - range(weight)[1],
+    mean_weight = mean(weight),
+    sd_weight = sd(weight),
+    range_acceleration = range(acceleration)[2] - range(acceleration)[1],
+    mean_acceleration = mean(acceleration),
+    sd_acceleration = sd(acceleration),
+    range_year = range(year)[2] - range(year)[1],
+    mean_year = mean(year),
+    sd_year = sd(year),
+    range_origin = range(origin)[2] - range(origin)[1],
+    mean_origin = mean(origin),
+    sd_origin = sd(origin)
+  )
+```
+
+**(e) Using the full data set, investigate the predictors graphically,
+using scatterplots or other tools of your choice. Create some plots
+highlighting the relationships among the predictors. Comment
+on your findings.**
+
+```{r}
+# Scatterplot matrix of quantitative predictors
+ggplot(Auto, aes(x = mpg, y = displacement)) +
+  geom_point() +
+  labs(x = "Miles per gallon", y = "Displacement (cubic inches)") +
+  theme_minimal()
+
+ggplot(Auto, aes(x = mpg, y = horsepower)) +
+  geom_point() +
+  labs(x = "Miles per gallon", y = "Horsepower") +
+  theme_minimal()
+
+ggplot(Auto, aes(x = mpg, y = weight)) +
+  geom_point() +
+  labs(x = "Miles per gallon", y = "Weight (lbs)") +
+  theme_minimal()
+
+ggplot(Auto, aes(x = displacement, y = horsepower)) +
+  geom_point() +
+  labs(x = "Displacement (cubic inches)", y = "Horsepower") +
+  theme_minimal()
+
+ggplot(Auto, aes(x = displacement, y = weight)) +
+  geom_point() +
+  labs(x = "Displacement (cubic inches)", y = "Weight (lbs)") +
+  theme_minimal()
+
+ggplot(Auto, aes(x = horsepower, y = weight)) +
+  geom_point() +
+  labs(x = "Horsepower", y = "Weight (lbs)") +
+  theme_minimal()
+
+# Boxplots of quantitative predictors by origin
+ggplot(Auto, aes(x = origin, y = mpg)) +
+  geom_boxplot() +
+  labs(x = "Origin", y = "Miles per gallon") +
+  theme_minimal()
+
+ggplot(Auto, aes(x = origin, y = horsepower)) +
+  geom_boxplot() +
+  labs(x = "Origin", y = "Horsepower") +
+  theme_minimal()
+
+ggplot(Auto, aes(x = origin, y = weight)) +
+  geom_boxplot() +
+  labs(x = "Origin", y = "Weight (lbs)") +
+  theme_minimal()
+
+# Bar plot of frequency of cylinders
+ggplot(Auto, aes(x = factor(cylinders))) +
+  geom_bar() +
+  labs(x = "Cylinders", y = "Frequency") +
+  theme_minimal()
+```
+
+My findings are
+
+1.  Miles per gallon is negatively correlated with displacement, horsepower, and weight, indicating that larger and more powerful cars tend to have lower gas mileage.
+
+2.  Displacement is positively correlated with horsepower and weight, indicating that larger cars tend to be more powerful and heavier.
+
+3.  The distribution of mpg, horsepower, and weight differs by origin, with cars from Japan generally having better gas mileage and lower horsepower and weight than cars from Europe or the US.
+
+4.  Most cars in the data set have either 4, 6, or 8 cylinders.
+
+**(f) Suppose that we wish to predict gas mileage (mpg) on the basis
+of the other variables. Do your plots suggest that any of the
+other variables might be useful in predicting mpg? Justify your
+answer.**
+
+**10. This exercise involves the Boston housing data set**
+
+```{r}
+
+# Load Boston dataset
+data(Boston)
+
+# Check dimensions of the dataset
+dim(Boston)
+```
+
+**a) How many rows are in this data set? How many columns? What
+do the rows and columns represent?**
+
+The Boston dataset contains information about 506 neighborhoods in Boston. Each neighborhood is represented by a row in the dataset, while each column represents a different characteristic of the neighborhood, such as crime rate, the average number of rooms per dwelling, and the distance to employment centers. The target variable, median value of owner-occupied homes in \$1000s, is also included in the dataset. Overall, the dataset has 14 columns and 506 rows.
+
+```{r}
+library(tidyverse)
+
+# create a dataframe with the predictors (columns) in the Boston dataset
+predictors <- Boston %>%
+  select(-medv)
+
+# create pairwise scatterplots of the predictors
+pairs(predictors)
+
+```
+
+**(b) Make some pairwise scatterplots of the predictors (columns) in
+this data set. Describe your findings.**
+
+The scatterplots show that some predictors have a linear relationship with each other while others do not. For example, a positive linear relationship exists between the average number of rooms per dwelling and the median value of owner-occupied homes. On the other hand, the proportion of non-retail business acres per town and the nitric oxide concentration have a negative linear relationship. Some predictors do not have a clear linear relationship with any other predictors. For example, the crime rate and the proportion of residential land zoned for lots over 25,000 square feet do not have a linear relationship with other predictors.
+
+**(c) Are any of the predictors associated with per capita crime rate?
+If so, explain the relationship.
+Are any of the predictors associated with per capita crime rate?
+If so, explain the relationship.**
+
+We can plot the crime rate (crim) in the Boston dataset against several variables to find the answer to this problem.
+
+```{r}
+ggplot(Boston, aes(x = crim, y = medv)) +
+  geom_point(alpha = 0.5) +
+  labs(title = "Crime Rate vs Median Value of Owner-Occupied Homes", 
+       x = "Per Capita Crime Rate", y = "Median Value of Owner-Occupied Homes")
+```
+
+The scatterplot shows a negative correlation between the median value of owner-occupied residences and the per capita crime rate. This shows that areas with greater crime rates also have generally less expensive real estate.
+
+Using the cor() function, we can examine the relationship between the crime rate and each of the other predictors.\
+
+```{r}
+# correlation between crime rate and other predictors
+cor(Boston$crim, Boston[-1])
+```
+
+From the correlation matrix, we can see that the crime rate is positively correlated with variables such as the proportion of non-retail business acres per town (indus) and the proportion of lower status of the population (lstat), and negatively correlated with variables such as the pupil-teacher ratio by town (ptratio) and the nitric oxides concentration (nox). This suggests that neighborhoods with higher crime rates tend to have higher proportions of non-retail business areas and lower socioeconomic status. On the other hand, neighborhoods with lower crime rates tend to have better education resources and lower air pollution levels.\
+
+**(d) Do any of the census tracts of Boston appear to have particularly
+high crime rates? Tax rates? Pupil-teacher ratios? Comment on
+the range of each predictor.**
+
+We can create histograms of each predictor to examine the range and distribution of each variable.
+
+```{r}
+# create histograms of each predictor
+ggplot(Boston, aes(x = crim)) +
+  geom_histogram(binwidth = 2, fill = "red", alpha = 0.5) +
+  labs(title = "Distribution of Per Capita Crime Rate")
+
+ggplot(Boston, aes(x = tax)) +
+  geom_histogram(binwidth = 2, fill = "red", alpha = 0.5) +
+  labs(title = "Distribution of Full-Value Property Tax Rate per $10,000")
+
+ggplot(Boston, aes(x = ptratio)) +
+  geom_histogram(binwidth = 0.5, fill = "red", alpha = 0.5) +
+  labs(title = "Distribution of Pupil-Teacher Ratio by Town")
+```
+
+In order to investigate if any census tracts in Boston have high crime rates, tax rates or pupil-teacher ratios, we can create histograms of each predictor to observe the range and distribution of each variable.
+
+The histogram shows that the per capita crime rate is positively skewed to the right, indicating that there are some census tracts with high crime rates, but they are not very common. The full-value property tax rate per \$10,000 is also skewed to the right, suggesting that there are some census tracts with high tax rates, but not as many as high crime rate tracts. The pupil-teacher ratio by town is approximately normally distributed, with the majority of data within the range of 15 to 20.
+
+**e) How many of the census tracts in this data set bound the Charles
+river?**
+We can use the **sum()** function to count the number of census tracts that bound the Charles river. In the Boston dataset, the variable **chas** is an indicator variable where 1 indicates that the census tract borders the Charles river and 0 indicates that it does not.
+
+```{r}
+# count the number of census tracts that bound the Charles river
+sum(Boston$chas == 1)
+```
+
+We can see that there are 35 census tracts in the Boston dataset that border the Charles river.\
+
+**(f) What is the median pupil-teacher ratio among the towns in this
+data set?**
+
+```{r}
+median(Boston$ptratio)
+```
+
+**(g) Which census tract of Boston has lowest median value of owneroccupied homes? What are the values of the other predictors
+for that census tract, and how do those values compare to the
+overall ranges for those predictors? Comment on your findings.**
+
+```{r}
+
+# find the row with the lowest median value of owner-occupied homes
+min_medv_row <- Boston %>% slice_min(medv)
+
+# print out the values of the predictors for that census tract
+min_medv_row %>% select(-medv)
+```
+
+From the output, we can see that the census tract with the lowest median value of owner-occupied homes (MEDV) has a value of \$5,000. The other predictor values for this census tract are:
+
+1.  CRIM: 38.3518
+
+2.  ZN: 0
+
+3.  INDUS: 18.10
+
+4.  CHAS: 0
+
+5.  NOX: 0.6930
+
+6.  RM: 5.453
+
+7.  AGE: 100.0
+
+8.  DIS: 1.4896
+
+9.  RAD: 24
+
+10. TAX: 666
+
+11. PTRATIO: 20.2
+
+12. B: 396.90
+
+13. LSTAT: 30.59
+
+We can see that the crime rate (CRIM) for this census tract is very high compared to the rest of the dataset, and the proportion of residential land zoned for lots over 25,000 sq.ft (ZN) is zero, indicating that the entire census tract is composed of smaller residential lots. The proportion of non-retail business acres per town (INDUS) is at the highest end of the range of values for this predictor, indicating that the census tract has a high proportion of non-retail businesses. The pupil-teacher ratio (PTRATIO) is slightly above the median value for this predictor in the dataset, and the percentage of lower status of the population (LSTAT) is extremely high, indicating that this census tract has a high poverty rate.
+
+Overall, the predictor values for this census tract indicate a very high poverty rate, a high proportion of non-retail businesses, and a very high crime rate compared to the rest of the dataset.\
+
+**(h) In this data set, how many of the census tracts average more
+than seven rooms per dwelling? More than eight rooms per
+dwelling? Comment on the census tracts that average more than
+eight rooms per dwelling.**
+
+```{r}
+# filter for census tracts with > 7 rooms per dwelling
+more_than_seven <- Boston %>% filter(rm > 7)
+nrow(more_than_seven)  # number of census tracts with > 7 rooms
+
+# filter for census tracts with > 8 rooms per dwelling
+more_than_eight <- Boston %>% filter(rm > 8)
+nrow(more_than_eight)  # number of census tracts with > 8 rooms
+```
+
+There are 64 census tracts that have more than seven rooms per dwelling, and only 13 census tracts that have more than eight rooms per dwelling.\
+
+Census tracts with more than eight rooms per dwelling are likely to be located in more affluent areas, as larger houses with more rooms are typically more expensive. We can investigate this further by looking at the values of the other predictors for census tracts with more than eight rooms per dwelling.
+
+```{r}
+# filter for census tracts with > 8 rooms per dwelling
+more_than_eight <- Boston %>% filter(rm > 8)
+
+# summary of the other predictors for census tracts with > 8 rooms per dwelling
+summary(more_than_eight[, -c(1, 7)])
+```
+
+From the output, we can see that census tracts with more than eight rooms per dwelling tend to have lower crime rates (crim), lower pupil-teacher ratios (ptratio), and higher median values of owner-occupied homes (MEDV) compared to the overall ranges of these predictors in the dataset. This is consistent with the idea that census tracts with larger houses are typically more affluent and have lower crime rates and better schools.
+
+
+\
+
+\
+
+
+
+
+
+
+
+
