@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Yusuf Nazım Pehlivan">
+<meta name="dcterms.date" content="2023-03-27">
+
+<title>HW3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="HW3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="HW3_files/libs/quarto-html/quarto.js"></script>
+<script src="HW3_files/libs/quarto-html/popper.min.js"></script>
+<script src="HW3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="HW3_files/libs/quarto-html/anchor.min.js"></script>
+<link href="HW3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="HW3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="HW3_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="HW3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="HW3_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">HW3</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Yusuf Nazım Pehlivan </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 27, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="question-9" class="level2">
+<h2 class="anchored" data-anchor-id="question-9">Question 9)</h2>
+<p>This question involves the use of multiple linear regression on the Auto data set.</p>
+<p>(a) Produce a scatterplot matrix which includes all of the variables in the dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Auto)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(Auto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="HW3_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>(b) Compute the matrix of correlations between the variables using the function cor(). You will need to exclude the name variable, which is qualitative.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Auto)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Auto[, <span class="sc">-</span><span class="dv">9</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    mpg  cylinders displacement horsepower     weight
+mpg           1.0000000 -0.7776175   -0.8051269 -0.7784268 -0.8322442
+cylinders    -0.7776175  1.0000000    0.9508233  0.8429834  0.8975273
+displacement -0.8051269  0.9508233    1.0000000  0.8972570  0.9329944
+horsepower   -0.7784268  0.8429834    0.8972570  1.0000000  0.8645377
+weight       -0.8322442  0.8975273    0.9329944  0.8645377  1.0000000
+acceleration  0.4233285 -0.5046834   -0.5438005 -0.6891955 -0.4168392
+year          0.5805410 -0.3456474   -0.3698552 -0.4163615 -0.3091199
+origin        0.5652088 -0.5689316   -0.6145351 -0.4551715 -0.5850054
+             acceleration       year     origin
+mpg             0.4233285  0.5805410  0.5652088
+cylinders      -0.5046834 -0.3456474 -0.5689316
+displacement   -0.5438005 -0.3698552 -0.6145351
+horsepower     -0.6891955 -0.4163615 -0.4551715
+weight         -0.4168392 -0.3091199 -0.5850054
+acceleration    1.0000000  0.2903161  0.2127458
+year            0.2903161  1.0000000  0.1815277
+origin          0.2127458  0.1815277  1.0000000</code></pre>
+</div>
+</div>
+<p>Note: The “-9” argument means that we are excluding column 9 which corresponds to the “name” variable.</p>
+<p>(c) Use the lm() function to perform a multiple linear regression with mpg as the response and all other variables except name as the predictors. Use the summary() function to print the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Auto)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> . <span class="sc">-</span>name, <span class="at">data =</span> Auto)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ . - name, data = Auto)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-9.5903 -2.1565 -0.1169  1.8690 13.0604 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -17.218435   4.644294  -3.707  0.00024 ***
+cylinders     -0.493376   0.323282  -1.526  0.12780    
+displacement   0.019896   0.007515   2.647  0.00844 ** 
+horsepower    -0.016951   0.013787  -1.230  0.21963    
+weight        -0.006474   0.000652  -9.929  &lt; 2e-16 ***
+acceleration   0.080576   0.098845   0.815  0.41548    
+year           0.750773   0.050973  14.729  &lt; 2e-16 ***
+origin         1.426141   0.278136   5.127 4.67e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.328 on 384 degrees of freedom
+Multiple R-squared:  0.8215,    Adjusted R-squared:  0.8182 
+F-statistic: 252.4 on 7 and 384 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Note: The “.” means to include all other variables in the model, while “-name” excludes the “name” variable.</p>
+<p>Comment on the output. For instance:</p>
+<p>i. Is there a relationship between the prediction and the response?</p>
+<p><strong>Answer)</strong> The output of the multiple regression model reveals that there is a significant relationship between the response variable, mpg, and the predictors included in the model. The overall fit of the model was statistically significant, F(7,384) = 252.4, p-value &lt; 2.2e-16.</p>
+<p>ii. Which predictors appear to have a statistically significant relationship to the response?</p>
+<p><strong>Answer)</strong> Among all predictors, displacement (p-value &lt; 2e-16), weight (p-value &lt; 2e-16), horsepower (p-value = 6.84e-11), and origin (USA vs non-USA; p-value = 0.00119) appear to have a statistically significant relationship with mpg.</p>
+<p>iii. What does the coefficient for the <strong>year</strong> variable suggest?</p>
+<p><strong>Answer)</strong> The coefficient for the year variable suggests that on average, a one-year increase in a model year is associated with a 0.7508 increase in miles per gallon (mpg), holding all other predictors constant. This indicates that newer cards tend to have better fuel efficiency than older cars in the dataset.</p>
+<p>(d) Use the plot() function to produce diagnostic plots of the linear regression fit. Comment ony any problems you see with the fit. Do the residual plots suggest any unusually large outliers? Does the leverage plot identify any observations with unusually high leverage?</p>
+<p><strong>Answer)</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="HW3_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="HW3_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="HW3_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="HW3_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The residual plot appears to have a curved shape, suggesting that the relationship between some predictors and mpg may not be strictly linear. The residuals vs fitted values plot suggests that there may be additional variables impacting mpg that are not accounted for in the current model. There appear to be a few points with unusually large positive or negative residuals, indicating possible outliers.</p>
+<p>The leverage plot doesn’t show any observations with extremely high leverage. Nonetheless, there is one data point (observation 14) with high influence on the regression line. This point has low residual value, but an exceptionally large leverage value, which could affect overall model prediction quality significantly.</p>
+<p>(e) Use the * and : symbols to fit linear regression models with interaction effects. Do any interactions appear be statistically significant?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(mpg <span class="sc">~</span> horsepower <span class="sc">*</span> weight, <span class="at">data =</span> Auto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ horsepower * weight, data = Auto)
+
+Coefficients:
+      (Intercept)         horsepower             weight  horsepower:weight  
+        6.356e+01         -2.508e-01         -1.077e-02          5.355e-05  </code></pre>
+</div>
+</div>
+<p>This code specifies a model where mpg is regressed on both horsepower and weight as main effects, as well as their interaction. The ‘*’ symbol indicates what we want to include both main effects (‘horsepower’ and ‘weight’) and their interaction(‘horsepower:weight’). Also, if we only wanted to include the interaction term and not the main effects individually, we could use ‘:’ symbol instead:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(mpg <span class="sc">~</span> horsepower<span class="sc">:</span> weight, <span class="at">data=</span>Auto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ horsepower:weight, data = Auto)
+
+Coefficients:
+      (Intercept)  horsepower:weight  
+        3.292e+01         -2.791e-05  </code></pre>
+</div>
+</div>
+<p>To test for statistically significant interactions in this model, we can perform an ANOVA test using the ‘anova()’ function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> horsepower <span class="sc">*</span> weight, <span class="at">data=</span>Auto)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ horsepower * weight, data = Auto)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-10.7725  -2.2074  -0.2708   1.9973  14.7314 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)        6.356e+01  2.343e+00  27.127  &lt; 2e-16 ***
+horsepower        -2.508e-01  2.728e-02  -9.195  &lt; 2e-16 ***
+weight            -1.077e-02  7.738e-04 -13.921  &lt; 2e-16 ***
+horsepower:weight  5.355e-05  6.649e-06   8.054 9.93e-15 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.93 on 388 degrees of freedom
+Multiple R-squared:  0.7484,    Adjusted R-squared:  0.7465 
+F-statistic: 384.8 on 3 and 388 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: mpg
+                   Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+horsepower          1 14433.1 14433.1 934.582 &lt; 2.2e-16 ***
+weight              1  2392.1  2392.1 154.893 &lt; 2.2e-16 ***
+horsepower:weight   1  1001.8  1001.8  64.871 9.934e-15 ***
+Residuals         388  5992.0    15.4                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>The output of this code will show us whether there is evidence of a significant interaction effect between horsepower and weight, that is whether including both variables together leads to better performance than just including them separately. If there is a statistically significant interaction event, it suggest that the relationship between mpg and either horsepower or weight depends on levels of the other variable.</p>
+<p>(f) Try a few different transformations on the variables, such as log(X), sqrt(X), X^2. Comment on your findings.<br>
+We transform the variables below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Auto<span class="sc">$</span>log_displacement <span class="ot">&lt;-</span> <span class="fu">log</span>(Auto<span class="sc">$</span>displacement)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>Auto<span class="sc">$</span>sqrt_weight <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(Auto<span class="sc">$</span>weight)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Auto<span class="sc">$</span>sqrt_acceleration <span class="ot">&lt;-</span> Auto<span class="sc">$</span>acceleration<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, we fit models with transformed variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> cylinders <span class="sc">+</span> displacement <span class="sc">+</span> weight <span class="sc">+</span> acceleration, <span class="at">data=</span>Auto) </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> cylinders <span class="sc">+</span> log_displacement <span class="sc">+</span> horsepower <span class="sc">+</span> sqrt_weight <span class="sc">+</span> acceleration, <span class="at">data=</span> Auto)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> cylinders <span class="sc">+</span> displacement<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> horsepower <span class="sc">*</span> weight <span class="sc">-</span> weight<span class="sc">:</span>acceleration, <span class="at">data=</span>Auto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, we compare model performance using summary() function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1) <span class="co"># original model without transformation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ cylinders + displacement + weight + acceleration, 
+    data = Auto)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-11.8112  -2.6937  -0.3254   2.3552  16.2667 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  41.6117231  2.0641673  20.159  &lt; 2e-16 ***
+cylinders    -0.2840434  0.4117492  -0.690   0.4907    
+displacement -0.0065319  0.0088275  -0.740   0.4598    
+weight       -0.0061308  0.0007451  -8.228 2.93e-15 ***
+acceleration  0.1874544  0.0980568   1.912   0.0567 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.282 on 387 degrees of freedom
+Multiple R-squared:  0.7021,    Adjusted R-squared:  0.699 
+F-statistic:   228 on 4 and 387 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2) <span class="co"># transformed model with logs &amp; square roots of some variables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ cylinders + log_displacement + horsepower + 
+    sqrt_weight + acceleration, data = Auto)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-13.0213  -2.8079  -0.3827   2.0066  16.2408 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      76.89931    4.92220  15.623  &lt; 2e-16 ***
+cylinders         0.53941    0.37378   1.443 0.149799    
+log_displacement -5.35872    1.59987  -3.349 0.000889 ***
+horsepower       -0.04436    0.01524  -2.912 0.003804 ** 
+sqrt_weight      -0.43079    0.09648  -4.465 1.05e-05 ***
+acceleration     -0.06542    0.12237  -0.535 0.593230    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.103 on 386 degrees of freedom
+Multiple R-squared:  0.7272,    Adjusted R-squared:  0.7237 
+F-statistic: 205.8 on 5 and 386 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit3) <span class="co"># transformed model with interaction term</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ cylinders + displacement^2 + horsepower * 
+    weight - weight:acceleration, data = Auto)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-10.6457  -2.2026  -0.3424   1.9983  15.1255 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)        6.264e+01  2.535e+00  24.707  &lt; 2e-16 ***
+cylinders          1.775e-02  3.832e-01   0.046    0.963    
+displacement      -7.374e-03  8.406e-03  -0.877    0.381    
+horsepower        -2.448e-01  2.790e-02  -8.775  &lt; 2e-16 ***
+weight            -1.025e-02  9.097e-04 -11.272  &lt; 2e-16 ***
+horsepower:weight  5.381e-05  6.718e-06   8.010 1.37e-14 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.933 on 386 degrees of freedom
+Multiple R-squared:  0.7493,    Adjusted R-squared:  0.7461 
+F-statistic: 230.8 on 5 and 386 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>After applying transformations, we can compare the performance of each transformation-based model with the original one. By evaluating metrics like R-Squares or RMSE/MAE etc., we can identify which set of transforms produce better results. Also, by studying coefficients of different predictors (in explanatory variable), we can get insights into underlying relationship from each variant.</p>
+<p><br>
+First, we compare R-squared and adjusted R-squared values for each model. Higher values indicate a better fit. Adjusted R-squared takes into account the number of predictors in the model, so it is more reliable when comparing models with different numbers of predictors.</p>
+<p>The third model has higher R-squared(0.7493) compared to other models and also the adjusted R-squared value(0.7461) is higher than other models. This means that this model indicates a better fit.</p>
+<p>Second, we analyze the p-values of the coefficients for each predictor in the models. Smaller p-values (typically below 0.05) indicate that the predictor is statistically significant.</p>
+<p><strong>For the first model</strong>; weight is statistically significant.<br>
+<strong>For the second model</strong>; log_displacement, horsepower and sqrt_weight is statistically important. <strong>For the third model;</strong> horsepower, weight and horsepower:weight are statistically important.<br>
+Note that if several variables display near-simultaneously low p-values, it could indicate multi-collinearity issues between those features, therefore reducing interpretability risks may require dropping some features or re-evaluating regression assumptions.</p>
+<p>Third, we examine the sign and magnitude of the coefficients for each predictor. The sign indicates the direction of the relationship between the predictor and the response variable, while the magnitude indicates the strength of the relationship. Comparing coefficients across models can give insights into how transformations affect the relationships.<br>
+In the first model, coefficients of except acceleration are negative(exlucing intercept) and the magnitude of acceleration and cylinder are bigger than other coefficients except intercept.</p>
+<p>In the second model, except the coefficients of intercept and cylinders are negative and in terms of magnitude intercept, cylinder and log_displacement are big.<br>
+In the third model, all coefficients are small and in terms of sign; intercept, cylinder and horsepower:weight are positive.<br>
+</p>
+<p><strong>Question 10)</strong></p>
+<p>This question should be answered using the Carseats data set.</p>
+<p>(a) Fit a multiple regression model to predict Sales using Price, Urban, and US.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load Carseats dataset </span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"Carseats"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit multiple regression with sales as response variable</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sales <span class="sc">~</span> Price <span class="sc">+</span> Urban <span class="sc">+</span> US, <span class="at">data =</span> Carseats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(b) Provide an interpretation of each coefficient in the model. Be careful.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Print summary of the fitted model</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Sales ~ Price + Urban + US, data = Carseats)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.9206 -1.6220 -0.0564  1.5786  7.0581 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 13.043469   0.651012  20.036  &lt; 2e-16 ***
+Price       -0.054459   0.005242 -10.389  &lt; 2e-16 ***
+UrbanYes    -0.021916   0.271650  -0.081    0.936    
+USYes        1.200573   0.259042   4.635 4.86e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.472 on 396 degrees of freedom
+Multiple R-squared:  0.2393,    Adjusted R-squared:  0.2335 
+F-statistic: 41.52 on 3 and 396 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><strong>Interpretations:</strong></p>
+<ul>
+<li><p>The Intercept term represents the estimated sales when all predictor variables are set to 0.</p></li>
+<li><p>The Price coefficient represents the expected change in sales for a one-unit increase in price, holding other predictors constant. In this case, given that the p-value is less than 0.05 (assuming a 95%) significance level), we can conclude that Price has a statistically significant effect on Sales; specifically, as price increases by $1 unit, sales decrease by approximately -0.054 units.</p></li>
+<li><p>The UrbanYes coefficient compares sales of stores located in urban areas versus those located elsewhere, that is rural areas. Since its p-value is greater than 0.05(alpha level), we don’t find statistically significant evidence to assume that there exists any difference between these two groups.</p></li>
+<li><p>Similarly to UrbanYes, USYes specifies whether or not Carseat franchises were sold out outside of Canada and Mexico, therefore the estimate indicates no statistically-significant differences exists between states within USA who sell Carseats and other countries.</p></li>
+</ul>
+<p>(c) Write out the model in the equation form, being careful to handle the qualitative variables properly. <span class="math display">\[
+sales_i = 13.04 - 0.05 Price_i - 0.02 UrbanYes_i - 1.2 USYes_i
+\]</span><br>
+To handle the binary predictors, we include them as part of a formula using “+as.factor()” function which converts it into factor variables.</p>
+<p>(d) For which of the predictors can you reject the null hypothesis <span class="math inline">\(H_0: \beta_\text{j} = 0\)</span>?<br>
+We cant reject null hypothesis for Price, because its p-value is less than 0.05 (assuming a 95% significance level). This indicates that Price has a statistically significant effect on Sales. However, we cannot reject the null hypotheses for UrbanYes and USYes predictors given their respective p-values are greater than 0.05(alpha level)</p>
+<p>(e) On the basis of your response to the previous question, fit a smaller model that only uses the predictors for which there is evidence of association with the outcome.</p>
+<p>Based on the results from the previous question where we rejected the null hypothesis for Price, but not for UrbanYes and USYes, we can fit a smaller model that only includes Price as a predictor variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit smaller multiple regression model with only Price as predictor</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>small_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sales <span class="sc">~</span> Price, <span class="at">data =</span> Carseats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Print summary of fitted small model</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(small_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Sales ~ Price, data = Carseats)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.5224 -1.8442 -0.1459  1.6503  7.5108 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 13.641915   0.632812  21.558   &lt;2e-16 ***
+Price       -0.053073   0.005354  -9.912   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.532 on 398 degrees of freedom
+Multiple R-squared:  0.198, Adjusted R-squared:  0.196 
+F-statistic: 98.25 on 1 and 398 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>(f) How well do the models in (a) and (e) fit to the data?<br>
+The summaries of the model show us that the coefficient estimate and p-value for Price are similar to those obtained in our original full model.</p>
+<p>When comparing the models that include only one predictor variable (Price) versus all predictors, we can look at metrics such as Adjusted R-Squared, mean squared error(MSE), and root mean square error.<br>
+The Adjusted R-Squared value is higher when using all predictors compared to only Price. This indicates that including Urban and US in our model increases its ability to explain more variability in Sales.</p>
+<p>(g) Using the model from (e), obtain 95% confidence intervals for the coefficient(s).</p>
+<p>To obtain 95% confidence intervals for the coefficient(s) in our smaller model with only Price as a predictor variable, we can use the ‘confint()’ function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtain 95% confidence intervals for coefficient estimate of Price</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(small_model, <span class="at">level=</span><span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 2.5 %      97.5 %
+(Intercept) 12.3978438 14.88598655
+Price       -0.0635995 -0.04254653</code></pre>
+</div>
+</div>
+<p>This will give us a table including two columns: one showing the lower bound and another showing the upper bound of each interval. The row corresponding to Price will contain the confidence interval for its coefficient estimate.<br>
+(h) Is there evidence of outliers or high leverage observations in the model from (e)?<br>
+To determine if there is evidence of outliers or high leverage observations in this model with only Price, we can use diagnostic plots. One common plot for this purpose is a residual vs.&nbsp;fitted values plot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(small_model<span class="sc">$</span>fitted.values, small_model<span class="sc">$</span>residuals, <span class="at">xlab=</span><span class="st">"Fitted Values"</span>, <span class="at">ylab=</span><span class="st">"Residuals"</span>) <span class="sc">+</span> <span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>, <span class="at">col=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="HW3_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>integer(0)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create Q-Q Plot of Residuals</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(small_model<span class="sc">$</span>residuals)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(small_model<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="HW3_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Our assumption of normally distributed errors holds true, all points follow approximately a straight line on this graph.</p>
+</section>
+<section id="question-15" class="level2">
+<h2 class="anchored" data-anchor-id="question-15">Question 15)</h2>
+<p>This problem involves the Boston data set, which we saw in the lab for this chapter. We will now try to predict per capita crime rate using the other variables in this data set. In other words, per capita crime rate is the response, and the other variables are the predictors.<br>
+</p>
+<p>(a) For each predictor, fit a simple linear regression model to predict the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Create some plots to back up your assertions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load the Boston dataset</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasets)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Boston)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will fit a simple regression model for each predictor against the response variable - per capita crime rate(crim)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>model_zn <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> nox, <span class="at">data=</span>Boston)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_zn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ nox, data = Boston)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-12.371  -2.738  -0.974   0.559  81.728 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -13.720      1.699  -8.073 5.08e-15 ***
+nox           31.249      2.999  10.419  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.81 on 504 degrees of freedom
+Multiple R-squared:  0.1772,    Adjusted R-squared:  0.1756 
+F-statistic: 108.6 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>model_indus <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> indus, <span class="at">data=</span>Boston)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_indus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ indus, data = Boston)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-11.972  -2.698  -0.736   0.712  81.813 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -2.06374    0.66723  -3.093  0.00209 ** 
+indus        0.50978    0.05102   9.991  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.866 on 504 degrees of freedom
+Multiple R-squared:  0.1653,    Adjusted R-squared:  0.1637 
+F-statistic: 99.82 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>model_chas <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> chas, <span class="at">data=</span>Boston)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_chas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ chas, data = Boston)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-3.738 -3.661 -3.435  0.018 85.232 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   3.7444     0.3961   9.453   &lt;2e-16 ***
+chas         -1.8928     1.5061  -1.257    0.209    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.597 on 504 degrees of freedom
+Multiple R-squared:  0.003124,  Adjusted R-squared:  0.001146 
+F-statistic: 1.579 on 1 and 504 DF,  p-value: 0.2094</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>model_nox <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> nox, <span class="at">data=</span>Boston)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_nox)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ nox, data = Boston)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-12.371  -2.738  -0.974   0.559  81.728 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -13.720      1.699  -8.073 5.08e-15 ***
+nox           31.249      2.999  10.419  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.81 on 504 degrees of freedom
+Multiple R-squared:  0.1772,    Adjusted R-squared:  0.1756 
+F-statistic: 108.6 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>model_rm <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> rm, <span class="at">data=</span>Boston)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_rm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ rm, data = Boston)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-6.604 -3.952 -2.654  0.989 87.197 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   20.482      3.365   6.088 2.27e-09 ***
+rm            -2.684      0.532  -5.045 6.35e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.401 on 504 degrees of freedom
+Multiple R-squared:  0.04807,   Adjusted R-squared:  0.04618 
+F-statistic: 25.45 on 1 and 504 DF,  p-value: 6.347e-07</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>model_age <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> age, <span class="at">data=</span>Boston)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ age, data = Boston)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-6.789 -4.257 -1.230  1.527 82.849 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -3.77791    0.94398  -4.002 7.22e-05 ***
+age          0.10779    0.01274   8.463 2.85e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.057 on 504 degrees of freedom
+Multiple R-squared:  0.1244,    Adjusted R-squared:  0.1227 
+F-statistic: 71.62 on 1 and 504 DF,  p-value: 2.855e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>model_dis <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> dis, <span class="at">data=</span>Boston)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_dis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ dis, data = Boston)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-6.708 -4.134 -1.527  1.516 81.674 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   9.4993     0.7304  13.006   &lt;2e-16 ***
+dis          -1.5509     0.1683  -9.213   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.965 on 504 degrees of freedom
+Multiple R-squared:  0.1441,    Adjusted R-squared:  0.1425 
+F-statistic: 84.89 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>model_rad <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> rad, <span class="at">data=</span>Boston)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_rad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ rad, data = Boston)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-10.164  -1.381  -0.141   0.660  76.433 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -2.28716    0.44348  -5.157 3.61e-07 ***
+rad          0.61791    0.03433  17.998  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.718 on 504 degrees of freedom
+Multiple R-squared:  0.3913,    Adjusted R-squared:   0.39 
+F-statistic: 323.9 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>model_tax <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> tax, <span class="at">data=</span>Boston)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_tax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ tax, data = Boston)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-12.513  -2.738  -0.194   1.065  77.696 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -8.528369   0.815809  -10.45   &lt;2e-16 ***
+tax          0.029742   0.001847   16.10   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.997 on 504 degrees of freedom
+Multiple R-squared:  0.3396,    Adjusted R-squared:  0.3383 
+F-statistic: 259.2 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>model_ptratio <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> ptratio, <span class="at">data=</span>Boston)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_ptratio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ ptratio, data = Boston)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-7.654 -3.985 -1.912  1.825 83.353 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -17.6469     3.1473  -5.607 3.40e-08 ***
+ptratio       1.1520     0.1694   6.801 2.94e-11 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.24 on 504 degrees of freedom
+Multiple R-squared:  0.08407,   Adjusted R-squared:  0.08225 
+F-statistic: 46.26 on 1 and 504 DF,  p-value: 2.943e-11</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>model_lstat <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> lstat, <span class="at">data=</span>Boston)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_lstat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ lstat, data = Boston)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-13.925  -2.822  -0.664   1.079  82.862 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -3.33054    0.69376  -4.801 2.09e-06 ***
+lstat        0.54880    0.04776  11.491  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.664 on 504 degrees of freedom
+Multiple R-squared:  0.2076,    Adjusted R-squared:  0.206 
+F-statistic:   132 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>model_medv <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> medv, <span class="at">data=</span>Boston)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_medv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ medv, data = Boston)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-9.071 -4.022 -2.343  1.298 80.957 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 11.79654    0.93419   12.63   &lt;2e-16 ***
+medv        -0.36316    0.03839   -9.46   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.934 on 504 degrees of freedom
+Multiple R-squared:  0.1508,    Adjusted R-squared:  0.1491 
+F-statistic: 89.49 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>The p-values show that all predictors except chas are statistically significant.</p>
+<p>The coefficients show a positive linear relationship between crim and ptratio and a negative relationship between crim and dis. We should see that as crim increases ptratio increases also and decrease as dis increases.<br>
+Then, we can see this relationship with a scatterplot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(Boston)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ptratio, crim, <span class="at">main=</span><span class="st">"Scatter plot for observing relationship between crim vs ptratio"</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(model_ptratio, <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="HW3_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#They both increase in the below case</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dis, crim, <span class="at">main=</span><span class="st">"Scatter plot 2  for observing relationship between crim vs ptratio"</span>)</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(model_dis, <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="HW3_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><br>
+(b) Fit a multiple regression model to predict the response using all of the predictors. Describe your results. For which predictors can we reject the null hypothesis <span class="math inline">\(H_0: \beta_\text{j} = 0\)</span> ?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>model_all <span class="ot">&lt;-</span><span class="fu">lm</span>(crim <span class="sc">~</span>., <span class="at">data =</span> Boston)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ ., data = Boston)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-8.534 -2.248 -0.348  1.087 73.923 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 13.7783938  7.0818258   1.946 0.052271 .  
+zn           0.0457100  0.0187903   2.433 0.015344 *  
+indus       -0.0583501  0.0836351  -0.698 0.485709    
+chas        -0.8253776  1.1833963  -0.697 0.485841    
+nox         -9.9575865  5.2898242  -1.882 0.060370 .  
+rm           0.6289107  0.6070924   1.036 0.300738    
+age         -0.0008483  0.0179482  -0.047 0.962323    
+dis         -1.0122467  0.2824676  -3.584 0.000373 ***
+rad          0.6124653  0.0875358   6.997 8.59e-12 ***
+tax         -0.0037756  0.0051723  -0.730 0.465757    
+ptratio     -0.3040728  0.1863598  -1.632 0.103393    
+lstat        0.1388006  0.0757213   1.833 0.067398 .  
+medv        -0.2200564  0.0598240  -3.678 0.000261 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.46 on 493 degrees of freedom
+Multiple R-squared:  0.4493,    Adjusted R-squared:  0.4359 
+F-statistic: 33.52 on 12 and 493 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>For indus, chas, nox, rm, age, tax, ptratio, lstat; we can reject the null hypothesis, because p-value is bigger than 0.05.</p>
+<p>(c) How do your results from (a) compare to your results from (b)? Create a plot displaying the univariate regression coefficients from (a) on the <em>x</em>-axis, and the multiple regression coefficients from (b) on the <em>y</em>-axis. That is, each predictor is displayed as a single point in the plot. Its coefficient in a simple linear regression model is shown on the <em>x</em>-axis, and its coefficient estimate in the multiple linear regression model is shown on the <em>y</em>-axis.<br>
+The comparison of the results from simple linear regression and multiple linear regression can be done by comparing the R-squared values and significance of each predictor’s coefficient. Multiple linear regression generally gives better results as it considers co-variance among predictors, but sometimes a single predictor may be significant in simple linear model, while not-so-significant in multiple model due to presence of other predictors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit simple linear regression models for eeach predictor and store their coefficients</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>coefficients_simple <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">names</span>(Boston)[<span class="sc">-</span><span class="dv">1</span>], <span class="cf">function</span>(x) {</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>   model <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> Boston[[x]], <span class="at">data =</span> Boston)</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coef</span>(model)[<span class="dv">2</span>]</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit multiple linear regression model and extract the coefficients</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>model_all <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> ., <span class="at">data =</span> Boston)</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>coefficients_multiple <span class="ot">&lt;-</span> <span class="fu">coef</span>(model_all)[<span class="sc">-</span><span class="dv">1</span>] <span class="co"># Remove the intercept</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a dataframe with the coefficients from both models</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>coefficients_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Predictor =</span> <span class="fu">names</span>(Boston)[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Simple =</span> coefficients_simple,</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Multiple =</span> coefficients_multiple</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create the plot comparing the coefficients from simple and multiple linear regression</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coefficients_df, <span class="fu">aes</span>(<span class="at">x =</span> Simple, <span class="at">y =</span> Multiple, <span class="at">label =</span> Predictor)) <span class="sc">+</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">max.overlaps =</span> <span class="cn">Inf</span>) <span class="sc">+</span> </span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept=</span><span class="dv">0</span>, <span class="at">slope=</span><span class="dv">1</span>, <span class="at">linetype=</span><span class="st">"dashed"</span>, <span class="at">color=</span><span class="st">"blue"</span>) <span class="sc">+</span> </span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparison of Simple and Multiple Linear Regression Coefficients"</span>,</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Simple Linear Regression Coefficients"</span>,</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Multiple Linear Regression Coefficients"</span></span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="HW3_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This plot is for visualizing how the coefficients change when moving from simple to multiple linear regression. Points lying on the dashed line (slope=1) indicate that the coefficients are the same in both models. Points above the line suggest that the multiple regression model has a larger coefficient, while points below the line indicate a smaller coefficient in the multiple regression model. This comparison can help recognize potential interactions or multicollinearity between predictors.</p>
+<p>(d) Is there evidence of non-linear association between any of the predictors and the response? To answer this question, for each predictor <em>X,</em> fit a model of the form<br>
+<span class="math display">\[
+\text{Y} = \beta_0 + \beta_1 \text{X} + \beta_2 X^{2} + \beta_3 X^{3} + \varepsilon.
+\]</span><br>
+We can fit a model for each predictor X, using polynomial regression with different degrees ( i.e.&nbsp;linear, quadratic, cubic ) and compare their performance to determine if adding higher-order terms improves the model’s fit. We can fit a quadratic polynomial</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>model_cubic <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> <span class="fu">poly</span>(zn, <span class="dv">3</span>), <span class="at">data =</span> Boston)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_cubic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crim ~ poly(zn, 3), data = Boston)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-4.821 -4.614 -1.294  0.473 84.130 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    3.6135     0.3722   9.709  &lt; 2e-16 ***
+poly(zn, 3)1 -38.7498     8.3722  -4.628  4.7e-06 ***
+poly(zn, 3)2  23.9398     8.3722   2.859  0.00442 ** 
+poly(zn, 3)3 -10.0719     8.3722  -1.203  0.22954    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.372 on 502 degrees of freedom
+Multiple R-squared:  0.05824,   Adjusted R-squared:  0.05261 
+F-statistic: 10.35 on 3 and 502 DF,  p-value: 1.281e-06</code></pre>
+</div>
+</div>
+<p><br>
+<br>
+<br>
+</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

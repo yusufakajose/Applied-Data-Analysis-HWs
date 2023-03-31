@@ -1,0 +1,380 @@
+---
+title: "HW3"
+author: "Yusuf Nazım Pehlivan"
+date: 2023-03-27
+format: html
+editor: visual
+---
+
+```{r}
+library(ISLR2)
+```
+
+## Question 9)
+
+This question involves the use of multiple linear regression on the Auto data set.
+
+\(a\) Produce a scatterplot matrix which includes all of the variables in the dataset.
+
+```{r}
+#Load data
+data(Auto)
+pairs(Auto)
+```
+
+\(b\) Compute the matrix of correlations between the variables using the function cor(). You will need to exclude the name variable, which is qualitative.
+
+```{r}
+data(Auto)
+cor(Auto[, -9])
+```
+
+Note: The "-9" argument means that we are excluding column 9 which corresponds to the "name" variable.
+
+\(c\) Use the lm() function to perform a multiple linear regression with mpg as the response and all other variables except name as the predictors. Use the summary() function to print the results.
+
+```{r}
+data(Auto)
+model <- lm(mpg ~ . -name, data = Auto)
+summary(model)
+```
+
+Note: The "." means to include all other variables in the model, while "-name" excludes the "name" variable.
+
+Comment on the output. For instance:
+
+i\. Is there a relationship between the prediction and the response?
+
+**Answer)** The output of the multiple regression model reveals that there is a significant relationship between the response variable, mpg, and the predictors included in the model. The overall fit of the model was statistically significant, F(7,384) = 252.4, p-value \< 2.2e-16.
+
+ii\. Which predictors appear to have a statistically significant relationship to the response?
+
+**Answer)** Among all predictors, displacement (p-value \< 2e-16), weight (p-value \< 2e-16), horsepower (p-value = 6.84e-11), and origin (USA vs non-USA; p-value = 0.00119) appear to have a statistically significant relationship with mpg.
+
+iii\. What does the coefficient for the **year** variable suggest?
+
+**Answer)** The coefficient for the year variable suggests that on average, a one-year increase in a model year is associated with a 0.7508 increase in miles per gallon (mpg), holding all other predictors constant. This indicates that newer cards tend to have better fuel efficiency than older cars in the dataset.
+
+\(d\) Use the plot() function to produce diagnostic plots of the linear regression fit. Comment ony any problems you see with the fit. Do the residual plots suggest any unusually large outliers? Does the leverage plot identify any observations with unusually high leverage?
+
+**Answer)**
+
+```{r}
+plot(model)
+```
+
+The residual plot appears to have a curved shape, suggesting that the relationship between some predictors and mpg may not be strictly linear. The residuals vs fitted values plot suggests that there may be additional variables impacting mpg that are not accounted for in the current model. There appear to be a few points with unusually large positive or negative residuals, indicating possible outliers.
+
+The leverage plot doesn't show any observations with extremely high leverage. Nonetheless, there is one data point (observation 14) with high influence on the regression line. This point has low residual value, but an exceptionally large leverage value, which could affect overall model prediction quality significantly.
+
+\(e\) Use the \* and : symbols to fit linear regression models with interaction effects. Do any interactions appear be statistically significant?
+
+```{r}
+lm(mpg ~ horsepower * weight, data = Auto)
+```
+
+This code specifies a model where mpg is regressed on both horsepower and weight as main effects, as well as their interaction. The '\*' symbol indicates what we want to include both main effects ('horsepower' and 'weight') and their interaction('horsepower:weight'). Also, if we only wanted to include the interaction term and not the main effects individually, we could use ':' symbol instead:
+
+```{r}
+lm(mpg ~ horsepower: weight, data=Auto)
+```
+
+To test for statistically significant interactions in this model, we can perform an ANOVA test using the 'anova()' function:
+
+```{r}
+model <- lm(mpg ~ horsepower * weight, data=Auto)
+summary(model)
+anova(model)
+```
+
+The output of this code will show us whether there is evidence of a significant interaction effect between horsepower and weight, that is whether including both variables together leads to better performance than just including them separately. If there is a statistically significant interaction event, it suggest that the relationship between mpg and either horsepower or weight depends on levels of the other variable.
+
+\(f\) Try a few different transformations on the variables, such as log(X), sqrt(X), X\^2. Comment on your findings.\
+We transform the variables below.
+
+```{r}
+Auto$log_displacement <- log(Auto$displacement)
+Auto$sqrt_weight <- sqrt(Auto$weight)
+Auto$sqrt_acceleration <- Auto$acceleration^2
+```
+
+Then, we fit models with transformed variables.
+
+```{r}
+fit1 <- lm(mpg ~ cylinders + displacement + weight + acceleration, data=Auto) 
+fit2 <- lm(mpg ~ cylinders + log_displacement + horsepower + sqrt_weight + acceleration, data= Auto)
+fit3 <- lm(mpg ~ cylinders + displacement^2 + horsepower * weight - weight:acceleration, data=Auto)
+```
+
+Then, we compare model performance using summary() function
+
+```{r}
+summary(fit1) # original model without transformation
+summary(fit2) # transformed model with logs & square roots of some variables
+summary(fit3) # transformed model with interaction term
+```
+
+After applying transformations, we can compare the performance of each transformation-based model with the original one. By evaluating metrics like R-Squares or RMSE/MAE etc., we can identify which set of transforms produce better results. Also, by studying coefficients of different predictors (in explanatory variable), we can get insights into underlying relationship from each variant.
+
+\
+First, we compare R-squared and adjusted R-squared values for each model. Higher values indicate a better fit. Adjusted R-squared takes into account the number of predictors in the model, so it is more reliable when comparing models with different numbers of predictors.
+
+The third model has higher R-squared(0.7493) compared to other models and also the adjusted R-squared value(0.7461) is higher than other models. This means that this model indicates a better fit.
+
+Second, we analyze the p-values of the coefficients for each predictor in the models. Smaller p-values (typically below 0.05) indicate that the predictor is statistically significant.
+
+**For the first model**; weight is statistically significant.\
+**For the second model**; log_displacement, horsepower and sqrt_weight is statistically important. **For the third model;** horsepower, weight and horsepower:weight are statistically important.\
+Note that if several variables display near-simultaneously low p-values, it could indicate multi-collinearity issues between those features, therefore reducing interpretability risks may require dropping some features or re-evaluating regression assumptions.
+
+Third, we examine the sign and magnitude of the coefficients for each predictor. The sign indicates the direction of the relationship between the predictor and the response variable, while the magnitude indicates the strength of the relationship. Comparing coefficients across models can give insights into how transformations affect the relationships.\
+In the first model, coefficients of except acceleration are negative(exlucing intercept) and the magnitude of acceleration and cylinder are bigger than other coefficients except intercept.
+
+In the second model, except the coefficients of intercept and cylinders are negative and in terms of magnitude intercept, cylinder and log_displacement are big.\
+In the third model, all coefficients are small and in terms of sign; intercept, cylinder and horsepower:weight are positive.\
+
+**Question 10)**
+
+This question should be answered using the Carseats data set.
+
+\(a\) Fit a multiple regression model to predict Sales using Price, Urban, and US.
+
+```{r}
+#Load Carseats dataset 
+data("Carseats")
+```
+
+```{r}
+#Fit multiple regression with sales as response variable
+model <- lm(Sales ~ Price + Urban + US, data = Carseats)
+```
+
+\(b\) Provide an interpretation of each coefficient in the model. Be careful.
+
+```{r}
+#Print summary of the fitted model
+summary(model)
+```
+
+**Interpretations:**
+
+-   The Intercept term represents the estimated sales when all predictor variables are set to 0.
+
+-   The Price coefficient represents the expected change in sales for a one-unit increase in price, holding other predictors constant. In this case, given that the p-value is less than 0.05 (assuming a 95%) significance level), we can conclude that Price has a statistically significant effect on Sales; specifically, as price increases by \$1 unit, sales decrease by approximately -0.054 units.
+
+-   The UrbanYes coefficient compares sales of stores located in urban areas versus those located elsewhere, that is rural areas. Since its p-value is greater than 0.05(alpha level), we don't find statistically significant evidence to assume that there exists any difference between these two groups.
+
+-   Similarly to UrbanYes, USYes specifies whether or not Carseat franchises were sold out outside of Canada and Mexico, therefore the estimate indicates no statistically-significant differences exists between states within USA who sell Carseats and other countries.
+
+\(c\) Write out the model in the equation form, being careful to handle the qualitative variables properly. $$
+sales_i = 13.04 - 0.05 Price_i - 0.02 UrbanYes_i - 1.2 USYes_i 
+$$\
+To handle the binary predictors, we include them as part of a formula using "+as.factor()" function which converts it into factor variables.
+
+\(d\) For which of the predictors can you reject the null hypothesis $H_0: \beta_\text{j} = 0$?\
+We cant reject null hypothesis for Price, because its p-value is less than 0.05 (assuming a 95% significance level). This indicates that Price has a statistically significant effect on Sales. However, we cannot reject the null hypotheses for UrbanYes and USYes predictors given their respective p-values are greater than 0.05(alpha level)
+
+\(e\) On the basis of your response to the previous question, fit a smaller model that only uses the predictors for which there is evidence of association with the outcome.
+
+Based on the results from the previous question where we rejected the null hypothesis for Price, but not for UrbanYes and USYes, we can fit a smaller model that only includes Price as a predictor variable.
+
+```{r}
+#Fit smaller multiple regression model with only Price as predictor
+small_model <- lm(Sales ~ Price, data = Carseats)
+```
+
+```{r}
+#Print summary of fitted small model
+summary(small_model)
+```
+
+\(f\) How well do the models in (a) and (e) fit to the data?\
+The summaries of the model show us that the coefficient estimate and p-value for Price are similar to those obtained in our original full model.
+
+When comparing the models that include only one predictor variable (Price) versus all predictors, we can look at metrics such as Adjusted R-Squared, mean squared error(MSE), and root mean square error.\
+The Adjusted R-Squared value is higher when using all predictors compared to only Price. This indicates that including Urban and US in our model increases its ability to explain more variability in Sales.
+
+\(g\) Using the model from (e), obtain 95% confidence intervals for the coefficient(s).
+
+To obtain 95% confidence intervals for the coefficient(s) in our smaller model with only Price as a predictor variable, we can use the 'confint()' function:
+
+```{r}
+#Obtain 95% confidence intervals for coefficient estimate of Price
+confint(small_model, level=0.95)
+```
+
+This will give us a table including two columns: one showing the lower bound and another showing the upper bound of each interval. The row corresponding to Price will contain the confidence interval for its coefficient estimate.\
+(h) Is there evidence of outliers or high leverage observations in the model from (e)?\
+To determine if there is evidence of outliers or high leverage observations in this model with only Price, we can use diagnostic plots. One common plot for this purpose is a residual vs. fitted values plot:
+
+```{r}
+plot(small_model$fitted.values, small_model$residuals, xlab="Fitted Values", ylab="Residuals") + abline(h=0, col="red")
+```
+
+```{r}
+#Create Q-Q Plot of Residuals
+qqnorm(small_model$residuals)
+qqline(small_model$residuals)
+```
+
+Our assumption of normally distributed errors holds true, all points follow approximately a straight line on this graph.
+
+## Question 15)
+
+This problem involves the Boston data set, which we saw in the lab for this chapter. We will now try to predict per capita crime rate using the other variables in this data set. In other words, per capita crime rate is the response, and the other variables are the predictors.\
+
+\(a\) For each predictor, fit a simple linear regression model to predict the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Create some plots to back up your assertions.
+
+```{r}
+#Load the Boston dataset
+library(datasets)
+data(Boston)
+```
+
+We will fit a simple regression model for each predictor against the response variable - per capita crime rate(crim)
+
+```{r}
+model_zn <- lm(crim ~ nox, data=Boston)
+summary(model_zn)
+```
+
+```{r}
+model_indus <- lm(crim ~ indus, data=Boston)
+summary(model_indus)
+```
+
+```{r}
+model_chas <- lm(crim ~ chas, data=Boston)
+summary(model_chas)
+```
+
+```{r}
+model_nox <- lm(crim ~ nox, data=Boston)
+summary(model_nox)
+```
+
+```{r}
+model_rm <- lm(crim ~ rm, data=Boston)
+summary(model_rm)
+```
+
+```{r}
+model_age <- lm(crim ~ age, data=Boston)
+summary(model_age)
+```
+
+```{r}
+model_dis <- lm(crim ~ dis, data=Boston)
+summary(model_dis)
+```
+
+```{r}
+model_rad <- lm(crim ~ rad, data=Boston)
+summary(model_rad)
+```
+
+```{r}
+model_tax <- lm(crim ~ tax, data=Boston)
+summary(model_tax)
+```
+
+```{r}
+model_ptratio <- lm(crim ~ ptratio, data=Boston)
+summary(model_ptratio)
+```
+
+```{r}
+model_lstat <- lm(crim ~ lstat, data=Boston)
+summary(model_lstat)
+```
+
+```{r}
+model_medv <- lm(crim ~ medv, data=Boston)
+summary(model_medv)
+```
+
+The p-values show that all predictors except chas are statistically significant.
+
+The coefficients show a positive linear relationship between crim and ptratio and a negative relationship between crim and dis. We should see that as crim increases ptratio increases also and decrease as
+dis increases. \
+Then, we can see this relationship with a scatterplot.
+
+```{r}
+attach(Boston)
+plot(ptratio, crim, main="Scatter plot for observing relationship between crim vs ptratio")
+abline(model_ptratio, lwd=3, col="green")
+#They both increase in the below case
+```
+
+```{r}
+plot(dis, crim, main="Scatter plot 2  for observing relationship between crim vs ptratio")
+abline(model_dis, lwd=3, col="red")
+```
+
+\
+(b) Fit a multiple regression model to predict the response using all of the predictors. Describe your results. For which predictors can we reject the null hypothesis $H_0: \beta_\text{j} = 0$ ?
+
+```{r}
+model_all <-lm(crim ~., data = Boston)
+summary(model_all)
+```
+
+For indus, chas, nox, rm, age, tax, ptratio, lstat; we can reject the null hypothesis, because p-value is bigger than 0.05.
+
+\(c\) How do your results from (a) compare to your results from (b)? Create a plot displaying the univariate regression coefficients from (a) on the *x*-axis, and the multiple regression coefficients from (b) on the *y*-axis. That is, each predictor is displayed as a single point in the plot. Its coefficient in a simple linear regression model is shown on the *x*-axis, and its coefficient estimate in the multiple linear regression model is shown on the *y*-axis.\
+The comparison of the results from simple linear regression and multiple linear regression can be done by comparing the R-squared values and significance of each predictor's coefficient. Multiple linear regression generally gives better results as it considers co-variance among predictors, but sometimes a single predictor may be significant in simple linear model, while not-so-significant in multiple model due to presence of other predictors.
+
+```{r}
+#Fit simple linear regression models for eeach predictor and store their coefficients
+coefficients_simple <- sapply(names(Boston)[-1], function(x) {
+   model <- lm(crim ~ Boston[[x]], data = Boston)
+  coef(model)[2]
+})
+```
+
+```{r}
+#Fit multiple linear regression model and extract the coefficients
+model_all <- lm(crim ~ ., data = Boston)
+coefficients_multiple <- coef(model_all)[-1] # Remove the intercept
+```
+
+```{r}
+#Create a dataframe with the coefficients from both models
+coefficients_df <- data.frame(
+  Predictor = names(Boston)[-1],
+  Simple = coefficients_simple,
+  Multiple = coefficients_multiple
+)
+```
+
+```{r}
+#Create the plot comparing the coefficients from simple and multiple linear regression
+library(ggplot2)
+library(ggrepel)
+ggplot(coefficients_df, aes(x = Simple, y = Multiple, label = Predictor)) +
+  geom_point() + 
+  geom_text_repel(max.overlaps = Inf) + 
+  geom_abline(intercept=0, slope=1, linetype="dashed", color="blue") + 
+  labs(
+    title = "Comparison of Simple and Multiple Linear Regression Coefficients",
+    x = "Simple Linear Regression Coefficients",
+    y = "Multiple Linear Regression Coefficients"
+  )
+```
+
+This plot is for visualizing how the coefficients change when moving from simple to multiple linear regression. Points lying on the dashed line (slope=1) indicate that the coefficients are the same in both models. Points above the line suggest that the multiple regression model has a larger coefficient, while points below the line indicate a smaller coefficient in the multiple regression model. This comparison can help recognize potential interactions or multicollinearity between predictors.
+
+\(d\) Is there evidence of non-linear association between any of the predictors and the response? To answer this question, for each predictor *X,* fit a model of the form\
+$$
+\text{Y} = \beta_0 + \beta_1 \text{X} + \beta_2 X^{2} + \beta_3 X^{3} + \varepsilon.
+$$\
+We can fit a model for each predictor X, using polynomial regression with different degrees ( i.e. linear, quadratic, cubic ) and compare their performance to determine if adding higher-order terms improves the model's fit. We can fit a quadratic polynomial
+
+```{r}
+model_cubic <- lm(crim ~ poly(zn, 3), data = Boston)
+summary(model_cubic)
+```
+
+\
+\
+\
